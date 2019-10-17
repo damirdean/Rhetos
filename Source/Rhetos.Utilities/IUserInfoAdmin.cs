@@ -19,7 +19,7 @@
 
 namespace Rhetos.Utilities
 {
-    public interface IUserInfoAdmin : IUserInfo
+    public interface IUserInfoAdmin : IBasicUserInfo
     {
         /// <summary>
         /// User that is a BuiltInAdministrator has all claims by default, if the BuiltinAdminOverride option is set in web.config.

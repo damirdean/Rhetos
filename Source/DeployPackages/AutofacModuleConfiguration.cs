@@ -66,7 +66,7 @@ namespace DeployPackages
             builder.RegisterModule(new Rhetos.Configuration.Autofac.DefaultAutofacConfiguration(_deploymentTime, deployDatabaseOnly));
 
             // Specific registrations override:
-            builder.RegisterType<ProcessUserInfo>().As<IUserInfo>();
+            builder.RegisterType<ProcessUserInfo>().As<IBasicUserInfo>();
             builder.RegisterInstance(DeploymentUtility.InitializationLogProvider).As<ILogProvider>(); // InitializationLogProvider allows overriding deployment logging (both within and outside IoC).
 
             base.Load(builder);

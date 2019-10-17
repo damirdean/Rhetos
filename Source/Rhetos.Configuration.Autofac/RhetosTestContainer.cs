@@ -158,7 +158,7 @@ namespace Rhetos.Configuration.Autofac
             builder.RegisterModule(new DefaultAutofacConfiguration(deploymentTime: false, deployDatabaseOnly: false));
 
             // Specific registrations override:
-            builder.RegisterType<ProcessUserInfo>().As<IUserInfo>();
+            builder.RegisterType<ProcessUserInfo>().As<IBasicUserInfo>();
             builder.RegisterType<ConsoleLogProvider>().As<ILogProvider>();
 
             // Build the container:

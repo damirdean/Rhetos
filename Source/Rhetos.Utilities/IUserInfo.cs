@@ -22,7 +22,7 @@ namespace Rhetos.Utilities
     /// <summary>
     /// Implementation of this interface is a security principal provider.
     /// </summary>
-    public interface IUserInfo
+    public interface IBasicUserInfo
     {
         bool IsUserRecognized { get; }
 
@@ -46,5 +46,27 @@ namespace Rhetos.Utilities
         public string UserName { get { return null; } }
         public string Workstation { get { return null; } }
         public string Report() { return null; }
+    }
+
+    public interface IUserInfo : IBasicUserInfo
+    {
+    }
+
+    public class DefaultUserInfo : IUserInfo
+    {
+        private readonly IBasicUserInfo _basicUserInfo;
+
+        public DefaultUserInfo(IBasicUserInfo basicUserInfo)
+        {
+            _basicUserInfo = basicUserInfo;
+        }
+
+        public bool IsUserRecognized => _basicUserInfo.IsUserRecognized;
+        public string UserName => _basicUserInfo.UserName;
+        public string Workstation => _basicUserInfo.Workstation;
+        public string Report()
+        {
+            return _basicUserInfo.Report();
+        }
     }
 }
